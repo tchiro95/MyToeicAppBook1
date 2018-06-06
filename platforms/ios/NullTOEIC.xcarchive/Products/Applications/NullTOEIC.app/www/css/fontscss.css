@@ -1,0 +1,38 @@
+@font-face{
+	font-family: ShingoL;
+	src: url(../fonts/A-OTF-ShinGoPro-Light.otf);
+}
+@font-face{
+	font-family: ShingoR;
+	src: url(../fonts/A-OTF-ShinGoPro-Regular.otf);
+}
+@font-face{
+	font-family: ShingoM;
+	src: url(../fonts/A-OTF-ShinGoPro-Medium.otf);
+}
+
+@font-face{
+	font-family: CenturyOld;
+	src: url(../fonts/JBCE__R.TTF);
+}
+@font-face{
+	font-family: CenturyOldBold;
+	src: url(../fonts/JBCEB_R.TTF);
+}
+
+@font-face{
+	font-family: RyuminL;
+	src: url(../fonts/A-OTF-RyuminPro-Light.otf);
+}
+
+@font-face{
+	font-family: RyuminR;
+	src: url(../fonts/A-OTF-RyuminPro-Regular.otf);
+}
+
+@font-face{
+	font-family: RyuminM;
+	src: url(../fonts/A-OTF-RyuminPro-Medium.otf);
+}
+
+

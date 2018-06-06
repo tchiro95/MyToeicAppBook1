@@ -1,0 +1,1635 @@
+@charset "utf-8";
+@import url(index.css);
+@import url(fontscss.css);
+
+/*--headerのボタンラッパー--*/
+#header {
+	height: 45px;
+	width: 100vw;
+	box-sizing: border-box;
+
+	padding-left: .2em;
+	padding-right: .2em;
+	background: -webkit-linear-gradient(top, #1c2e35 88%, #183C4B 1%);
+	background: linear-gradient(to bottom, #1c2e35 88%, #183C4B 1%);
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+}
+
+#ReadingSet{
+	flex-grow: 1;
+	height: 45px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	vertical-align: middle;
+	padding: 0 0.5em;
+}
+
+.RIcon{
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	vertical-align: middle;
+}
+
+.headerBtnWrapper input:checked + span[class="indexIcon2em"]{
+    background: linear-gradient(to bottom, dimgray 0%,darkgray 100%);
+}
+
+.indexIcon2em{
+	margin: auto auto auto 1em;
+	height: 40px;
+	line-height: 40px;
+
+	color: white;
+	font-weight: bold;
+
+	width: 4em;
+	border: 1.5pt solid white;
+	border-radius: 3pt;
+	font-size: .8em;
+	text-align: center;
+}
+
+.headerBtnWrapper[id="HeaderCalender"]{
+	flex-grow: 1;
+	height: 3em;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	vertical-align: middle;
+}
+
+.headerBtnWrapper[id="HeaderCalender"] span > img{
+	max-height: 3em;
+	min-width: 1em;
+	max-height: 2em;
+	margin:auto;
+	vertical-align: middle;
+}
+
+.headerBtnWrapper[id="player"]{
+	flex-grow: 1;
+	height: 3em;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	vertical-align: middle;
+}
+
+.headerBtnWrapper[id="player"] span > img{
+	max-height: 3em;
+	min-width: 1em;
+	max-height: 2em;
+	margin:auto;
+	vertical-align: middle;
+}
+
+.indexIcon{
+	height: 3em;
+	line-height: 3em;
+	margin-left: 1em;
+	vertical-align: middle;
+	color: white;
+	font-weight: bold;
+}
+
+
+#headLastChild{
+	display: flex;
+	flex-direction: row;
+
+	justify-content: last;
+	width: 10vw;
+}
+
+.headIcon{
+	border: 1pt solid gray;
+	background-color: white;
+}
+
+.headIcon > img{
+	max-height: 3em;
+	min-width: 1em;
+	max-height: 2em;
+	margin:auto;
+	vertical-align: middle;
+}
+
+#indexTimerTime{
+	color: white;
+	font-weight: bold;
+}
+
+/*--チェックボックス：チェック時とボタン--*/
+.headerBtnWrapper input:checked + span > img{
+    background: linear-gradient(to bottom, dimgray 0%,darkgray 100%);
+}
+
+.headerBtnWrapper input:checked + span[class="indexIcon2em"]{
+    background: linear-gradient(to bottom, dimgray 0%,darkgray 100%);
+}
+
+
+/*--メニュー関連のCSSを分けます。--*/
+/*--ハンバーガーメニュー--*/
+.menuBtn {
+	margin-left: 2px;
+	padding-top: 0.5em;
+	width: 50px;
+	text-align: center;
+
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+}
+
+.bar {
+	width: 2em;
+	height: 2px;
+	background: white;
+	transition: all .5s;
+	transform-origin: left top;
+}
+
+.bar.middle {
+	opacity: 1;
+}
+
+.bar.bottom {
+	transform-origin: left bottom;
+}
+
+.menuBtn_text {
+	text-align: left;
+	color: white;
+	transition: all .5s;
+	visibility: visible;
+	opacity: 1;
+	font-size: .6em;
+	font-weight: bold;
+}
+
+/*--ハンバーガーメニューここまで--*/
+
+
+/*--メニューが開いた時の処理--*/
+
+.menuBtn > span{
+	flex-grow: 1;
+	margin-bottom: 0.3em;
+}
+
+.menuBtn > span:last-Child{
+	margin-bottom: 0;
+}
+
+.HamburgarMenuCheck:checked ~ .menuBtn .menuBtn_text {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.HamburgarMenuCheck:checked ~ .menuBtn .bar.top {
+	width: 2em;
+	transform: rotate(45deg);
+}
+
+.HamburgarMenuCheck:checked ~ .menuBtn .bar.middle {
+	opacity: 0;
+}
+
+.HamburgarMenuCheck:checked ~ .menuBtn .bar.bottom {
+	width: 2em;
+	transform: translateY(6px) rotate(-45deg);
+}
+
+
+.HamburgarMenuCheck ~.closeMenu {
+	position: fixed;
+	top: -10;
+	left: 0;
+	width: 100vw;
+	height: 120vh;
+	background: rgba(0,0,0,0);
+	transform: .5s;
+	-webkit-transform: .5s;
+
+	visibility: hidden;
+	z-index: -1;
+
+	transform: translate3d(0,0,0);
+}
+
+
+.HamburgarMenuCheck:checked ~ .closeMenu {
+	transform: .5s;
+	-webkit-transform: .5s;
+
+	background: rgba(0,0,0,.5);
+	visibility: visible;
+	z-index: 1;
+	transform: translate3d(0,0,0);
+}
+
+
+/*--メニューが開いた時の処理--*/
+/*--チェックボックスのボタン--*/
+
+input[type="radio"]{
+	position: absolute;
+	clip: rect(0,0,0,0);
+}
+
+input[type="checkbox"]{
+	position: absolute;
+	clip: rect(0,0,0,0);
+}
+
+
+.navMenu {
+	position: fixed;
+	top: 45px;
+	width: 100vw;
+	height: calc(100vh - 45px - 15px);
+
+    background: linear-gradient(to bottom, rgba(3,73,99,0.4) 0%,rgba(3,73,99,1) 100%);
+    z-index: 3;
+	overflow-y:scroll;
+	-webkit-overflow-scrolling: touch;  /* 慣性スクロールを付ける */
+
+    padding: 0 .5em .5em .5em;
+	box-sizing: border-box;
+	
+	transition: .5s;
+	-webkit-transition: .5s;
+	
+	left: -100vw;
+	opacity: 0.2;
+}
+
+.HamburgarMenuCheck:checked ~ .navMenu{
+	transition: .5s;
+	-webkit-transition: .5s;
+
+	left: 0;
+	opacity: 1;
+}
+
+/*--メニューのチェックボックス--*/
+input[type="checkbox"][class="toggle"] + span::before{
+	content: '\025b6';
+	display: inline-block;
+	vertical-align: .0em;
+	width: .8em;
+	height: .8em;
+	margin-right: .2em;
+	border-radius: .2em;
+	line-height: .65;
+	transition: all 0.1s linear;
+	-webkit-transition: all 0.1s linear;
+}
+
+input[type="checkbox"][class="toggle"]:checked + span::before{
+	vertical-align: .2em;
+	text-indent: .0em;
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	transition: all 0.1s linear;
+	-webkit-transition: all 0.1s linear;
+}
+
+input[type="checkbox"][class="toggle"][id="ModeUl"]:checked ~ #ModeUL{
+	display: block;
+}
+input[type="checkbox"][class="toggle"][id="Setter"]:checked ~ #setterUL{
+	display: block;
+}
+input[type="checkbox"][class="toggle"][id="Record"]:checked ~ #RecordUL{
+	display: block;
+}
+input[type="checkbox"][class="toggle"][id="partSelect"]:checked ~ #selectWrapPart{
+	display: block;
+}
+input[type="checkbox"][class="toggle"][id="ichiSelect"]:checked ~ #selectWrapIchi{
+	display: block;
+}
+/*--メニューのチェックボックスここまで--*/
+
+
+#ModeUL{
+	display: none;
+}
+
+#setterUL{
+	display: none;
+}
+
+#RecordUL{
+	display: none;
+}
+#selectWrapPart,#selectWrapIchi{
+	display: none;
+}
+
+.selectWrap{
+	display: flex;
+	flex-direction: column;
+}
+
+input[type="checkbox"][class="setting"] + span::before{
+	content: '\a0';
+	display: inline-block;
+	vertical-align: .2em;
+	width: .8em;
+	height: .8em;
+	margin-right: .2em;
+	border-radius: .2em;
+	background: silver;
+	text-indent: .15em;
+	line-height: .65;
+}
+
+input[type="checkbox"][class="setting"]:checked + span::before{
+	font-family: Arial, Helvetica, sans-serif;
+	content: '\2714 \fe0e';
+	color: #183B4B;
+	font-weight: bold;
+	background: linear-gradient(135deg, #cfe7fa 0%,#6393c1 100%);
+}
+
+
+/*--radioボタンの設定--*/
+.menuRadio + span::before, .menuRadio + div::before{
+	content: '\a0';
+	display: inline-block;
+	vertical-align: .2em;
+	width: .8em;
+	height: .8em;
+	margin-right: .2em;
+	border-radius: .6em;
+	background: silver;
+	text-indent: .15em;
+	line-height: .65;
+}
+
+
+#Part ~ #PartUl{
+	display: none;
+}
+
+#Part:checked ~ #PartUl{
+	display: block;
+}
+
+#Ichi ~ #IchiUl{
+	display: none;
+}
+
+#Ichi:checked ~ #IchiUl{
+	display: block;
+}
+
+.menuRadio:checked + span::before, .menuRadio:checked + div::before{
+	color: #183B4B;
+	background: radial-gradient(ellipse at center, navy 0%, navy 39%,silver 40%,silver 100%);
+}
+.menuRadio{
+	position: absolute;
+	clip: rect(0,0,0,0);
+}
+
+#scoreWrapper{
+	display: none;
+	width: 100%;
+	background: white;
+}
+
+/*--これがないとラベルにタッチしても反応しなことがある。*/
+label {
+	cursor:pointer;
+}
+
+.fixed {
+	position: fixed;
+	width: 100%;
+  	height: 100%;
+}
+
+#wrapMain{
+	width: 100vw;
+	height: calc( 100vh - 45px - 40px);
+	min-height: calc( 100vh - 45px - 40px);
+	max-height: calc( 100vh - 45px - 40px);
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;  /* 慣性スクロールを付ける */
+	background-color: #C9E2F2;  /* オーバースクロール時にこの色が見えるようにしたい */
+
+	margin: 45px, 0, 40px, 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	box-sizing: border-box;
+	position: absolute;
+}
+
+.wrapperDIV_bgGrey{
+	min-height: 100vh;
+	max-height: 500vh;
+	top:0;
+	width: 100vw;
+	height: 100%;
+	z-index: 3;
+	background-color: rgba(0,0,0,0.5);
+	display: none;
+	position: fixed;
+}
+
+#alertModal{
+	box-sizing: border-box;
+	position: absolute;
+	top: 10vh;
+	left:5vw;
+	width: 90vw;
+	height:auto;
+	max-height: 85vh;
+	background: white;
+	border: 4px solid #034863;
+	border-radius: 10px;
+	z-index: 3;
+	opacity: 1;
+	padding: 1em .5em 1em .5em;
+	visibility: hidden;
+	color: black;
+	display: flex;
+	flex-flow: column;
+}
+
+.modalTitle{
+	font-size: 1.2em;
+	color: #034863;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 0.5em;
+}
+
+
+.alertModalContents{
+	margin-bottom: 0.5em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.alertModalbutton{
+	width: 100%;
+	flex: 1;
+	text-align: center;
+	margin: 0.5em 0;
+	background: linear-gradient(to bottom, #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%);
+	color:#034863;
+	border-top: 1px solid #034863; 
+	border-bottom: 1px solid #034863; 
+}
+
+#alertModal div select{
+	margin: 0.4em 0;
+	padding: 0 .4em;
+	box-sizing: border-box;
+	line-height: 2em;
+	vertical-align: center;
+}
+
+#modalCloseWrap{
+	margin-bottom: 0.5em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 1em 0.5em; 
+}
+
+
+#upperWrapper{
+	width: 100%;
+	
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+}
+
+#upperWrapper > div{
+	text-align: center;
+	background: linear-gradient(to bottom, #183C4B 1%, #145976 88%);
+	margin-bottom: 0.5em;
+	padding: 0.5em;
+	height: 20px;
+	line-height: 20px;
+	font-family: ShingoM;
+	font-size: 0.9em;
+	color: white;
+}
+
+
+#quizContents > div[class="choices"]:lastchild {
+	margin-bottom: 0.5em;
+}
+
+/*--Part6とPart7の選択肢--*/
+
+#choice{
+	display: none;
+}
+
+#choiceDIV{
+	display: flex;
+	flex-direction:row-reverse;
+
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	top: 45px;
+	left: 100vw;
+	z-index: 3;
+	background: rgba(3,73,99,0.4);
+	transition: 0.5s;
+	margin-bottom: 10vh;
+	box-sizing: border-box;
+	opacity: 0;
+}
+
+#choiceDIVContents{
+	padding-top: 10px;
+	background: #85ABBC;
+	height: 90vh;	
+	width: 95vw;
+	text-align: left;
+	box-sizing: borderbox;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;  /* 慣性スクロールを付ける */
+
+}
+
+#choiceTag:checked ~ #choiceDIV{
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
+	opacity: 1;
+	left: 0;
+}
+
+
+.NO{
+	line-height: 20px;
+	margin-left: 0;
+	padding-left: 15px;
+	text-indent: -15px;
+	font-weight: bold;
+	text-align: left;
+}
+
+
+
+/*--radioボタンの設定--*/
+
+.choiceWrapper{
+	display: flex;
+	flex-direction: column;
+}
+
+
+.labelChoice{
+	line-height: 20px;
+	margin-left: 20px;
+	padding-left: 15px;
+	text-indent: -15px;
+	text-align: left;
+}
+
+.labelChoice:first-child::before{
+	content: "A:";
+	font-weight: bold;
+	padding-left: 0.5em;
+}
+
+.labelChoice:nth-child(2)::before{
+	content: "B:";
+	font-weight: bold;
+	padding-left: 0.5em;
+}
+.labelChoice:nth-child(3)::before{
+	content: "C:";
+	font-weight: bold;
+	padding-left: 0.5em;
+}
+.labelChoice:nth-child(4)::before{
+	content: "D:";
+	font-weight: bold;
+	padding-left: 0.5em;
+}
+.choicesButtonWrapper{
+	display: flex;
+	flex-direction: row;
+	margin:1em;
+	margin-top: 0.2em;
+}
+
+
+.ChoicesButton{
+	background: gainsboro;
+	border:1pt #034863 solid;
+	font-weight: bold;
+	text-align: center;
+	color: #034863;
+	flex:1;
+	margin:auto .5em auto 0;
+	height: 25px;
+	line-height: 25px;
+}
+
+.radioChoice:checked + div{
+	background: #034863;
+	color: white;
+}
+
+.footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: -webkit-linear-gradient(top, #183C4B 1%, #1c2e35 88%);
+	background: linear-gradient(to bottom, #183C4B 1%, #1c2e35 88%);
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+
+.goback{
+	display: block;
+	line-height: 40px;
+	text-align: center;
+	color: white;
+	padding: 0 .5em;
+	margin: auto;
+	flex: 1;
+	width: 49vw;
+}
+
+.goback:first-child{
+	border-right: 1px solid #ffffff;
+}
+	
+#copyRight{
+	color: white;
+	font-family: 'Times New Roman';
+	width: 100vw;
+	margin: auto;
+	text-align: center;
+}
+
+.footerSpace{
+	width:3vw;
+	background-color: white;
+}
+
+#footerChecker ~ #back_, #footerChecker ~ #go_{
+	display: inline-block;
+}
+#footerChecker ~ #backPart_, #footerChecker ~ #goPart_{
+	display: none;
+}
+
+.footer .footerSet3{
+	display: inline-block;
+}
+
+#footerChecker:checked ~ #back_, #footerChecker:checked ~ #go_{
+	display: none;
+}
+#footerChecker:checked ~ #backPart_, #footerChecker:checked ~ #goPart_{
+	display: inline-block;
+}
+
+#footerExpSwitch + #exp_{
+	color: black;
+	background: linear-gradient(to bottom, grey 0%, dimgray 100%);
+}
+
+#footerExpSwitch:checked + #exp_{
+	color: white;
+	background: linear-gradient(to bottom, dimgray 0%, black 100%);
+}
+
+
+/*--main構造ここまで--*/
+
+.showbox{
+	display: none;
+}
+
+
+/*--写真--*/
+
+/*--part1--*/
+#imgPic{
+	width: 90vw;
+	max-width: 300px;
+	margin: 1em auto;
+}
+
+#imgPic img{
+	width: 100%;
+	height: 100%;
+	max-height: 100%;
+	max-width: 100%;
+}
+
+#ReadingPic{
+	display:block;
+	margin:10px auto 10px auto;
+	width: 100%;
+}
+
+/*--メイン画面上部・タイトルやmp3プレイヤーの設定--*/
+
+
+#chart{
+	width: 95vw;
+	height: auto;
+}
+
+/*--calender--*/
+
+.calWrap{
+	max-height: 80%;
+
+	display: flex;
+	flex-direction: column;
+
+	justify-content: space-between;
+}
+
+.calRow{
+	height: 13vh;
+	display: flex;
+	flex-direction: row;
+
+	justify-content: center;
+	margin: auto;
+	border-bottom: solid 1px black;
+}
+
+
+.calTitleRow{
+	height: 7vh;
+	width: 98vw;
+	border-bottom: solid 1px black;
+
+	display: flex;
+	flex-direction: row;
+
+	text-align: center;
+	justify-content: space-between;
+	vertical-align: middle;
+	margin : 0 auto;
+}
+
+.calTitleRow div{
+	height: 1.8em;
+	vertical-align: middle;
+	margin: auto 0;
+}
+
+.calTitle{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.day{
+	width:calc(98vw / 7);
+	border-left:solid 1px black;
+	box-sizing: border-box;
+	background: white;
+	color:#034863;
+	padding: 0.5em;
+}
+.dayGrey{
+	width:calc(98vw / 7);
+	border-left:solid 1px black;
+	box-sizing: border-box;
+	background: grey;
+	color:black;
+	padding: 0.5em;
+}
+.dayBlue{
+	width:calc(98vw / 7);
+	border-left:solid 1px black;
+	box-sizing: border-box;
+	background: #C9E2F2;
+	color:#034863;
+	padding: 0.5em;
+}
+
+.dayRed{
+	border:solid 2px red;
+}
+
+.day:first-child,.dayBlue:first-child,.dayGrey:first-child{
+	color: red;
+}
+
+.day:last-child,.dayGrey:last-child,.dayBlue:last-child{
+	border-right:solid 1px black;
+}
+
+/*カレンダーのスコア一覧モーダル*/
+.alertCalCell{
+	display: flex;
+	height:35px;
+	width: 100%;
+	flex-direction: row;
+	justify-content: start;
+	border-top: 1pt solid black; 
+	padding: 0.5em;
+	box-sizing: border-box;
+	margin-top:auto;
+	margin-bottom:auto;
+}
+
+.alertCalCell:first-child{
+	margin-top: 0.5em;
+}
+.alertCalCell:last-child{
+	border-bottom: 1pt solid black;
+}
+
+.alertCalCell div:first-child{
+	width: 8em;
+}
+
+.alertCalCell div{
+	width: 4em;
+}
+
+/*--ListMypage--*/
+
+input[id="showOverview"]:checked + div[id="overviewWrapper"]{
+	display: block;
+}
+
+input[id="showOverview"] + div[id="overviewWrapper"]{
+	display: none;
+}
+
+#overviewWrapper{
+	width: 100%;
+	height: auto;
+	border: solid 1px #034863;
+	margin: 0;	
+	box-sizing: border-box;
+}
+
+#listIndex{
+	font-weight: bold;
+	line-height: 40px;
+	vertical-align: middle;
+	height: auto;
+	min-height: 40px;
+	border-top:2px double #034863;
+	border-bottom:2px double #034863;
+	background: #183B4B 100%;
+	color: white;
+	margin:auto;
+	text-align: center;
+
+}
+
+.listPartIndex{
+	padding:0.5em;
+	border-top: solid 2pt #034863;
+	border-bottom: solid 2pt #034863;
+	background: white;
+	color:#034863;
+	height: 2em;
+	font: 1.2em;
+	line-height: 2em;
+	margin: 0;
+}
+
+
+.listCellWrapper{
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
+
+	padding: 0 7px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.listLeftDiv {
+	padding: 0;
+	margin: auto 0;
+	font-weight: bold;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	width: auto;
+}
+
+.spacer {
+	width:7xp;
+}
+
+.listRightDiv {
+	margin:auto 0;
+}
+
+.listCellWrapper > div[class="listLeftDiv"] div{
+	margin:auto .25em;
+}
+
+.listCellWrapper > div[class="listLeftDiv"] div[class="scoreDate"]{
+	line-height: 16px;
+}
+
+.RQNo{
+	min-width: 40px;
+	width: auto;
+	position: relative;
+}
+
+.maruBatsu{
+	width:1.5em;
+	font-family: ShingoM;
+}
+
+.QuizAns{
+	width:auto;
+}
+
+.listCellWrapper:nth-child(odd){
+	background: #85ABBC;
+	border-bottom: 1px solid white;
+}
+.listCellWrapper:nth-child(even){
+	background: white;
+	border-bottom: 1px solid white;
+}
+
+/*ついでにマイページのリスト用のチェックボックス--*/
+
+.result_checkbox + .RQNo::before{
+	content: '\a0';
+	display: inline-block;
+	vertical-align: .2em;
+	width: .8em;
+	height: .8em;
+	margin-right: .2em;
+	border-radius: .2em;
+	background: #cfe7fa;
+	text-indent: .15em;
+	line-height: .65;
+}
+
+.result_checkbox:checked + .RQNo::after{
+	content: '';
+	display: block;
+	position: absolute;
+	top: 4px;
+	left:0px;
+	width: 10px;
+	height: 5px;
+	transform: rotate(-40deg);
+	font-weight: bold;
+	border-bottom: solid 2px 	#183B4B;
+	border-left: solid 2px 	#183B4B;
+}
+
+
+
+
+/*--------解説関係----------*/
+/*--解説本体--*/
+#kaisetsuDiv{
+	min-height: 100vh;
+}
+
+#kaisetsuDivWrap{
+	position: fixed;
+	left: 1vw;
+	top: 2vh;
+	width: 98vw;
+	height: 96vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.kaisetuupperWrapper{
+	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+	justify-content:flex-end;
+	height: 45px;
+	margin-bottom: 10px;
+}
+
+#closeButton, #modalCloseBtn{
+	color: white;
+	background-color: black;
+	border: 2px solid white;
+	border-radius: 7px;
+	text-align: center;
+	padding-top: .1em;
+	padding-bottom: .1em;
+	font-weight: bold;
+	width: 60px;
+	margin: auto 0;
+}
+
+/*--解説一番上の閉じるボタンや問題選択のタブスイッチ--*/
+
+/*--解説複数問題上のradioボタンの設定--*/
+
+.questionTabWrap{
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+	height: 53px;
+	margin-bottom: 10px;
+
+	text-align: center;
+	background: #85ABBC;
+	color: #034863;
+	vertical-align: middle;
+	border: 1px solid #034863;
+	border-radius: 5px;
+}
+
+.questionTabWrap div{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+
+	flex-grow: 1;
+	border-right: 1px solid #034863;
+}
+
+.quizTab:checked + div{
+	width: 100%;
+
+	height: 40px;
+	line-height: 40px;
+	flex-grow: 1;
+	border-right: 1px solid #034863;
+	background: #034863;
+	color: white;
+}
+
+.questionTabWrap div:last-of-type{
+	border-right: 0px solid #034863;
+}
+
+
+/*--二段目、解説や選択肢などのタブ用--*/
+
+/*--そのメニュー--*/
+.expMenu{
+	width: 100%;
+	box-sizing: border-box;
+
+	display: flex;
+	flex-direction: row;
+	flex-direction: center;
+	border-bottom: 0px;
+	height: 45px;
+	padding-bottom: 5px;
+}
+
+.expMenu div{
+	flex-grow: 1;
+	text-align:center;
+
+	color: white;
+	background-color:gray;
+	border-radius:5px 5px 0 0;
+	border: 2px solid dimgray;
+	border-bottom: 0px;
+	margin: auto;
+	margin-bottom: 0;
+
+	height: 40px;
+	line-height: 40px;
+}
+
+.expMenu div[class=expMenuesSelected]{
+	color: #034863;
+	background-color:white;
+}
+
+/*-解説モーダル本体のdiv-*/
+.lowerContentsWrapper{
+	font-family: ShingoL;
+	background-color: white;
+	padding: .5em;
+	border-radius: 0 0 5px 5px;
+	border: 2px solid #034863;
+	border-top: 0px;
+	box-sizing: border-box;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;  /* 慣性スクロールを付ける */
+
+	height: 100%;
+	max-height: calc(95vh - 30px - 10px - 30px);
+}
+
+.iconAns {
+	font-family: ShingoM;
+	width: 40px;
+	font-size:0.9em;
+	margin: auto;
+	margin-right: 10px;
+	color:#034863;
+	padding: 3px;
+	border-radius: 1px;
+	border: 2px solid #034863;
+	background-color: #85ABBC;
+}
+
+#iconGoNext {
+	flex-grow: 0;
+	min-width: 3em;
+	max-width: 5em;
+	margin: auto;
+	margin-right: 0.5em;
+	padding: 0.25em 0.75em;
+}
+
+
+.tangoIcon{
+	width: auto;
+	font-family: ShingoM;
+	font-size:0.85em;
+	margin-right: 0.25em;
+	color:white;
+	padding: 0 .25em;
+	border-radius: 2px;
+	border: 1px solid #034863;
+	background: #034863; 	
+}
+
+.bold{
+	font-family: "Helvetica Neue-bold", ShingoM;
+}
+
+.shadow{
+	text-shadow: 1px 1px 0 black;
+}
+
+.navy{
+	color: navy;
+}
+
+
+.baseColor{
+	color: #034863;
+}
+
+.black{
+	color: black;
+}
+
+.modalContents{
+	display: none;
+}
+
+.modalContentsSelected{
+	display: block;
+	font-size: .95em;
+}
+
+/*--基本ボタンの設定--*/
+.button{
+	flex-grow: 1;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top:auto;
+	margin-bottom:auto;
+	background: #41778E;
+	box-shadow: 0 .05em .25em gray;
+	border: #034863;
+	border-radius: 3px;
+	height: 25px;
+	color: white;
+	text-align: center;
+	font-family: ShingoM;
+	font-size: .9em;
+	line-height: 25px;
+	padding: 5px 15px;
+}
+
+.button:active{
+	background: #034863 linear-gradient(#034863, #034863);
+}
+
+.buttonPushed{
+	background: #034863;
+}
+
+/*--最初のメニューページ--*/
+
+#loadingDiv{
+	font-size: 2em;
+	color:black;
+	margin: auto;
+}
+
+#startDiv{
+	display: flex;
+	flex-flow: column;
+	justify-content: top;
+}
+
+#bookTitle{
+	font-size: 20px;
+	font-family: ShingoM;
+	width: 100%;
+	color: white;
+	background-color: #034863;
+	line-height: 1.2;
+	height: auto;
+	
+	text-align: center;
+	margin:auto;
+	padding: 0.5em;
+	box-sizing: border-box;
+}
+
+.mainTile{ 
+	display: flex;
+	width: 100%;
+	flex-flow: column;
+	justify-content: space-between;
+	box-sizing: border-box;
+	height:auto;
+	margin-top: 10px;
+}
+
+.indexDiv{
+	width: 95%;
+	padding: 5px;
+
+	box-sizing: border-box;
+
+	text-align:left;
+
+	background: #A1CDEC;
+	border-color: #034863;
+	border: 1px;
+
+	color: rgba(0, 0, 0, 0.0.90);
+	margin: auto;
+	margin-top: 5px;
+
+	height: auto;
+	align-items: stretch;
+}
+
+.indexDiv span{
+	color: #034863;
+	font-family: ShingoM;
+	font-size: 17px;
+}
+
+/*インデックスのボタンPart*/
+.IndexButtonWrap{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 5px 0;
+}
+
+.IndexButton{
+	flex-grow: 1;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top:auto;
+	margin-bottom:auto;
+	background: #41778E;
+	border: #034863;
+	height: 25px;
+	color: white;
+	text-align: center;
+	font-family: ShingoM;
+	line-height: 25px;
+}
+
+/*テスト関係のCSS*/
+.halfLine {
+	margin-bottom: 0.5em;
+}
+
+.boldJ {
+	font-size: 0.95em;
+	font-weight: bold;
+}
+
+.underLine{
+	text-decoration:underline;
+}
+
+/*--問題用のDIV--*/
+
+.quizWrapper{
+	margin: auto;
+}
+
+.switchWrawwper{
+	display: flex;
+	justify-content: start;
+	margin: auto;
+}
+
+.switchWrawwper div{
+	width: 5em;
+	text-align: center;
+	padding: 0 0.5em;
+	height: 2em;
+	line-height: 2em;
+	border: 2px solid #034863;
+	background: white;
+	color: #034863;
+}
+
+.switchWrawwper div:first-of-type{
+	border-right: 1px solid #034863;
+	border-radius: 5px 0 0 5px;
+}
+
+.switchWrawwper div:last-of-type{
+	border-radius: 0 5px 5px 0;
+}
+
+#JPG:checked ~ .switchWrawwper #tagJPG{
+	background: #034863;
+	color: white;
+}
+
+#TXT:checked ~ .switchWrawwper #tagTXT{
+	background: #034863;
+	color: white;
+}
+
+#TXT:checked ~ .quizWrapper #tagTXT{
+	background: #034863;
+	color: white;
+}
+
+#JPG:checked ~ .quizWrapper #showJPG{
+	display: block;
+}
+
+#TXT:checked ~ .quizWrapper #showTXT{
+	display: block;
+}
+
+#JPG ~ .quizWrapper #showJPG{
+	display: none;
+}
+
+#TXT ~ .quizWrapper #showTXT{
+	display: none;
+}
+
+/*---パート別---*/
+
+#EXexp{
+	font-family: ShingoL;
+}
+
+#Exyaku{
+	font-family: ShingoL;
+	padding-left: 2em;
+}
+
+#Exkaiwa{
+	margin-bottom: .5em;
+	border-bottom: 1px thin black;
+}
+
+.part3{ /*part３の頭下げ*/
+	margin-left: 45px;
+	text-indent: -45px;
+}
+.part3J{ /*part３の頭下げ*/
+	margin-left: 20px;
+	text-indent: -20px;
+}
+
+
+#ExkaiwaForQuiz{
+	font-family: "Helvetica Neue";
+	margin-bottom: .5em;
+	border: 2px solid black;
+	background: white;
+	border-radius: 5px;
+	margin: .5em;
+	width: 100%;
+	margin: 0.5em auto;
+	padding: 0.5em;
+	box-sizing: border-box;
+}
+
+#Exkyaku{
+	padding-left: 1em;
+}
+
+.P2shita {
+	margin-left: 2em;
+	text-indent: -2em;
+}
+.P2ueJ {
+	margin-left: 1em;
+}
+
+.P2shitaJ {
+	font-size: 0.9em;
+	margin-left: 2em;
+	text-indent: -1em;
+}
+
+.P7chat {
+	font-size: 0.9em;
+	margin-left: 2em;
+}
+
+.P7title {
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 0.5em;
+}
+
+.P7titleJ {
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 0.5em;
+}
+
+.P7enumeration {
+	text-indent: -1em;
+	margin-left: 1em;
+}
+
+.P7enumerationJ {
+	font-size: 0.9em;
+	margin-left: 2em;
+	text-indent: -1em;
+}
+
+.font-090per{
+	font-size: .9em;
+}
+
+/*---単語と発音記号---*/
+.tango {
+	font-size: .9em;
+	font-family: ShingoL;
+	text-indent: -30px;
+	padding-left: 30px;
+}
+
+.hosoku {
+	font-size: 0.7em;
+	font-weight: lighter;
+	text-indent: -1em;
+}
+
+.hatsuon {
+	font-family: "Times New Roman";
+}
+
+/*----------*/
+
+
+/*---写真やイラストなど---*/
+
+img.flag{
+	margin-right: 0.3em;
+	vertical-align: middle;
+	margin-left: 0.3em;
+	height: 0.9em;
+}
+
+/*---------*/
+
+
+/*-マークシート-*/
+#MarkSheetWrapper{
+	padding: 0.5em;
+	display: flex;
+	flex-direction: column;
+}
+.MarkSheetPart{
+	padding:0.5em;
+	border-top: solid 2pt #034863;
+	border-bottom: solid 2pt #034863;
+	background: white;
+	color:#034863;
+	height: 2em;
+	font: 1.2em;
+	line-height: 2em;
+	margin: .7em 0;
+}
+.MarkSheetQ{
+	font-weight: bold;
+	margin: auto 0.5em;
+}
+
+.MarkSheetCell{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	height: 35px;
+	margin: 0.5em 0;
+	box-sizing: border-box;
+}
+
+.MSChoices{
+	background: gainsboro;
+	font-weight: bold;
+	text-align: center;
+	color: #034863;
+	flex:1;
+	margin:auto .5em auto 0;
+	height: 35px;
+	line-height: 35px;
+}
+
+.radioMS:checked + div{
+	background: #034863;
+	color: white;
+}
+
+#stickyBanner{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+
+	width: 100%;
+	height: 50px;
+	background-color: #85ABBC;
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+}
+
+.banner_bottom{
+	bottom: 0;
+}
+
+.banner_top{
+	top: 0;
+}
+
+/*テーブル*/
+.tableScoreUpper{
+	width: auto;
+	margin: 10px 0;
+	border:0;
+}
+.tableScoreUpper td, th{
+	padding: 0;
+	width: 60px;
+}
+
+.Answer_circle{
+	width:12px;
+	height: 12px;
+	border: 5px solid #B01313;
+	border-radius: 12px;
+	display: block;
+	position: relative;
+	left: -9px;
+}
+
+.Answer_batsu{
+	display: block;
+	width:5px;
+	height: 20px;
+	background-color: #017D16;
+	transform: rotate(-45deg);
+	position: relative;
+}
+
+.Answer_batsu::before{
+	content: "";
+	display: block;
+	width:5px;
+	height: 20px;
+	transform: rotate(90deg);
+	background-color: #017D16;
+	position: absolute;
+}
